@@ -29,6 +29,7 @@ Include the `kisszyb.h` header in your project and link against the KISSZYB libr
 #include "kisszyb.h"
 
 int main() {
+    // Strings using kisszyb are delimitted by \# escape sequence.
     char buffer[256] = "Hello, World!\\#";
     AX25Frame myFrame;
 
@@ -50,7 +51,7 @@ int main(int argc, char **argv) {
     char buffer[512];
     while(1) {
         recv_from_direwolf(buffer, 512, "127.0.0.1", 8001);
-        if(strlen(buffer) > 2) {
+        if(strlen(buffer) > 2) { 
             printf("%s\n", buffer+2);
         }
     }
