@@ -2,9 +2,9 @@ CC=gcc
 CFLAGS=
 LIBS=-lkisszyb
 
-recv: send-example.c
-	$(CC) $(CFLAGS) send-example.c -o send $(LIBS)
+send: send-example.c
+	$(CC) $(CFLAGS) send-example.c -o send.exe $(LIBS)
 
 clean:
-	rm -f send
+	rm -f send.exe
 
