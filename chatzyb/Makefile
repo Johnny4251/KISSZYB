@@ -2,9 +2,10 @@ CC=gcc
 CFLAGS=
 LIBS=-lkisszyb
 
-recv: chatzyb.c
-	$(CC) $(CFLAGS) chatzyb.c -o chat $(LIBS)
+
+chat: chatzyb.c
+	$(CC) $(CFLAGS) chatzyb.c -o chat.exe $(LIBS)
 
 clean:
-	rm -f chat
+	rm -f chat.exe
 

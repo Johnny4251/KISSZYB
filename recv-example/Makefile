@@ -3,8 +3,8 @@ CFLAGS=
 LIBS=-lkisszyb
 
 recv: recv-example.c
-	$(CC) $(CFLAGS) recv-example.c -o recv $(LIBS)
+	$(CC) $(CFLAGS) recv-example.c -o recv.exe $(LIBS)
 
 clean:
-	rm -f recv
+	rm -f recv.exe
 
