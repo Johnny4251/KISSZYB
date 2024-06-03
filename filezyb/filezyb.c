@@ -5,7 +5,7 @@
 
 #define BUFFER_SIZE 255
 #define DEST_CALLSIGN "CQTEST-0"
-#define SOURCE_CALLSIGN "KD2ZYB-0"
+#define SOURCE_CALLSIGN "CQTEST-1"
 
 
 int main(int argc, char **argv) {
