@@ -21,7 +21,7 @@ sudo make install
 
 ## Usage
 
-Include the `kisszyb.h` header in your project and link against the KISSZYB library. Examples of usage can be found in the `examples` directory.
+Include the `kisszyb.h` header in your project and link against the KISSZYB library.
 
 ### Sending a Frame
 
