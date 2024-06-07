@@ -14,7 +14,6 @@ int main(int argc, char **argv) {
 		return -1;
 	}
 	char *img = argv[1];
-	printf("image: %s\n", img);
 
 	FILE *file = fopen(img, "r");
 	if(!file) {
@@ -22,6 +21,9 @@ int main(int argc, char **argv) {
 		return -1;
 	}
 	
+	printf("\n-----PICZYB-----\n\n");
+	printf("IMAGE: \t\t%s\n",img);
+
 	// height, width or width, height??
 	int img_array[WIDTH][HEIGHT];
 	for(int i=0; i<HEIGHT; i++) {
@@ -42,14 +44,14 @@ int main(int argc, char **argv) {
 		char buffer[WIDTH] = {0};
 		for(int j=0; j<WIDTH; j++) {
 			buffer[j] = (char)img_array[i][j];
-			//printf("num: %d:", buffer[j]);
-			//printf("%c\n", buffer[j]);
 		}
 		
 		strcpy(frame.data, buffer);
 		send_to_direwolf(&frame, "127.0.0.1", 8001);
 		sleep(1);
-		printf("row %d complete\n", i);
+		float percent = (i/(float)HEIGHT) * 100;
+		printf("\rTX_STATUS:\t%.2f%% COMPLETE  ", percent);
+		fflush(stdout);
 	}
 
 
