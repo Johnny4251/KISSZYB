@@ -8,7 +8,7 @@ def main(img_file):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     img = (img // 2).astype('uint8')
 
-    f = open(f"new_{img_file}.zyb", "w")
+    f = open(f"new_{img_file[0:len(img_file)-4]}.zyb", "w")
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
             f.write(str(img[i,j])+"\n")
