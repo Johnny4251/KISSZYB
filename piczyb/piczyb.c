@@ -24,10 +24,9 @@ int main(int argc, char **argv) {
 	printf("\n-----PICZYB-----\n\n");
 	printf("IMAGE: \t\t%s\n",img);
 
-	// height, width or width, height??
 	int img_array[WIDTH][HEIGHT];
-	for(int i=0; i<HEIGHT; i++) {
-		for(int j=0; j<WIDTH; j++) {
+	for(int i=0; i<WIDTH; i++) {
+		for(int j=0; j<HEIGHT; j++) {
 			char buff[100];
 			fgets(buff, sizeof(buff), file);
 			int num = atoi(buff);
@@ -48,15 +47,15 @@ int main(int argc, char **argv) {
 		
 		strcpy(frame.data, buffer);
 		send_to_direwolf(&frame, "127.0.0.1", 8001);
-		sleep(1);
+		usleep(800000);
 		float percent = (i/(float)HEIGHT) * 100;
 		printf("\rTX_STATUS:\t%.2f%% COMPLETE  ", percent);
 		fflush(stdout);
 	}
-
-
-
-
+	printf("\rTX_STATUS:\t100.00%% COMPLETE  ");
+	fflush(stdout);
+	printf("\n----------------\n");
+	
 	fclose(file);
 	return 0;
 }
