@@ -1,12 +1,19 @@
 CC = gcc
 CFLAGS = -lkisszyb
-TARGET = piczyb.exe
-SRC = piczyb.c
+TARGET1 = piczyb.exe
+SRC1 = piczyb.c
+TARGET2 = picrecv.exe
+SRC2 = picrecv.c
 
-all: $(TARGET)
+# Compile both targets by default
+all: $(TARGET1) $(TARGET2)
 
-$(TARGET): $(SRC)
-	$(CC) $(SRC) -o $(TARGET) $(CFLAGS)
+$(TARGET1): $(SRC1)
+	$(CC) $(SRC1) -o $(TARGET1) $(CFLAGS)
+
+$(TARGET2): $(SRC2)
+	$(CC) $(SRC2) -o $(TARGET2) $(CFLAGS)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET1) $(TARGET2)
+
