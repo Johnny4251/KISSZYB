@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 		if(strlen(row) > 2) {
 	            printf("row: %s\n\n", row+2);
 		    for(int i=0; i<HEIGHT; i++) {
-			    printf("%d ", (int)row[i]);
+			    printf("%d ", (int)row[i+2]);
 		    }
 		    printf("\n");
 		    //break;
