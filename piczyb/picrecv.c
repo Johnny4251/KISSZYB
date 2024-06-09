@@ -37,15 +37,14 @@ int main(int argc, char **argv) {
 	fclose(file);
 
 	while(1) {
-		char row[250];
-		recv_from_direwolf(row, 512, "127.0.0.1", 8001);
+		char row[WIDTH];
+		recv_from_direwolf(row, WIDTH, "127.0.0.1", 8001);
 		if(strlen(row) > 2) {
-	            printf("row: %s\n\n", row+2);
 		    for(int i=0; i<HEIGHT; i++) {
 			    printf("%d ", (int)row[i+2]);
 		    }
-		    printf("\n");
-		    //break;
+		    printf("\n\n");
+		    
         	}
 	}
 
