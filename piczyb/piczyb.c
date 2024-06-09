@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
 	printf("\n-----PICZYB-----\n\n");
 	printf("IMAGE: \t\t%s\n",img);
 
+	// build buffer
 	int img_array[WIDTH][HEIGHT];
 	for(int i=0; i<WIDTH; i++) {
 		for(int j=0; j<HEIGHT; j++) {
@@ -34,6 +35,16 @@ int main(int argc, char **argv) {
 		}
 	}
 	
+	// send two empty frames
+	for(int i=0; i < 2; i++) {
+		AX25Frame frame;
+		strncpy(frame.dest_callsign, "CQTEST-0", CALLSIGN_MAX_LEN);
+                strncpy(frame.source_callsign, "CQTEST-1", CALLSIGN_MAX_LEN);
+		strcpy(frame.data, "\\#");
+                send_to_direwolf(&frame, "127.0.0.1", 8001);
+	}
+
+	// TX Buffer
 	for(int i=0; i < HEIGHT; i++) {
 		
 		AX25Frame frame;
@@ -47,7 +58,12 @@ int main(int argc, char **argv) {
 		
 		strcpy(frame.data, buffer);
 		send_to_direwolf(&frame, "127.0.0.1", 8001);
+
+		// direwolf TNC can sometimes hang..
+		// the extra wait time will have to be tweaked
 		usleep(800000);
+		//sleep(2);
+		
 		float percent = (i/(float)HEIGHT) * 100;
 		printf("\rTX_STATUS:\t%.2f%% COMPLETE  ", percent);
 		fflush(stdout);
