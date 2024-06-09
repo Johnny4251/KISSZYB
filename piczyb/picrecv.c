@@ -3,6 +3,9 @@
 #include <string.h>
 #include <kisszyb.h>
 
+#define HEIGHT 250
+#define WIDTH 250
+
 int main(int argc, char **argv) {
 
 	if(argc < 2) {
@@ -32,5 +35,19 @@ int main(int argc, char **argv) {
 	file = fopen(filepath, "w");
 
 	fclose(file);
+
+	while(1) {
+		char row[250];
+		recv_from_direwolf(buffer, 512, "127.0.0.1", 8001);
+		if(strlen(row) > 2) {
+	            printf("row: %s\n\n", row+2);
+		    for(int i=0; i<HEIGHT; i++) {
+			    printf("%c ", row[i]);
+		    }
+		    printf("\n");
+		    //break;
+        	}
+	}
+
 	return 0;
 }
