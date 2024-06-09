@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 
 	while(1) {
 		char row[250];
-		recv_from_direwolf(buffer, 512, "127.0.0.1", 8001);
+		recv_from_direwolf(row, 512, "127.0.0.1", 8001);
 		if(strlen(row) > 2) {
 	            printf("row: %s\n\n", row+2);
 		    for(int i=0; i<HEIGHT; i++) {
