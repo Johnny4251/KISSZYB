@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 #define WIDTH 250
-#define HEIGHT 10
+#define HEIGHT 250
 
 int main(int argc, char **argv) {
 	
