@@ -50,19 +50,16 @@ int main(int argc, char **argv) {
 		AX25Frame frame;
 	        strncpy(frame.dest_callsign, "CQTEST-0", CALLSIGN_MAX_LEN);
         	strncpy(frame.source_callsign, "CQTEST-1", CALLSIGN_MAX_LEN);
-
 		char buffer[WIDTH] = {0};
 		for(int j=0; j<WIDTH; j++) {
 			buffer[j] = (char)img_array[i][j];
 		}
-		
+
 		strcpy(frame.data, buffer);
 		send_to_direwolf(&frame, "127.0.0.1", 8001);
 
-		// direwolf TNC can sometimes hang..
-		// the extra wait time will have to be tweaked
-		usleep(800000);
-		//sleep(2);
+		// give time for TX
+		sleep(2);
 		
 		float percent = (i/(float)HEIGHT) * 100;
 		printf("\rTX_STATUS:\t%.2f%% COMPLETE  ", percent);
