@@ -21,8 +21,10 @@ def decode_image(encoded_file, resize=False):
     
     pixel_values = list(map(int, lines))
     
-    dim = 250 
-    img_array = np.array(pixel_values).reshape((dim, dim))
+    width = 250
+    height = len(pixel_values) // width
+
+    img_array = np.array(pixel_values[:height * width]).reshape((height, width))
     
     img_array = (img_array * 2).astype('uint8')
     
