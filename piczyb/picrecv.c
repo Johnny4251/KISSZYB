@@ -33,20 +33,26 @@ int main(int argc, char **argv) {
         }
 	
 	file = fopen(filepath, "w");
-
-	fclose(file);
-
+	
 	while(1) {
 		char row[WIDTH];
-		recv_from_direwolf(row, WIDTH, "127.0.0.1", 8001);
+		recv_from_direwolf(row, WIDTH+5, "127.0.0.1", 8001);
+		
+		// check for end
+		if(strcmp(row, "END") == 0) {
+			break;
+		}
+
 		if(strlen(row) > 2) {
 		    for(int i=0; i<HEIGHT; i++) {
 			    printf("%d ", (int)row[i+2]);
+			    fprintf(file, "%d\n", (int)row[i+2]);
 		    }
 		    printf("\n\n");
 		    
         	}
 	}
 
+	fclose(file);
 	return 0;
 }

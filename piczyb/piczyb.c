@@ -67,6 +67,17 @@ int main(int argc, char **argv) {
 	}
 	printf("\rTX_STATUS:\t100.00%% COMPLETE  ");
 	fflush(stdout);
+	
+	printf("sending END signal...\n");
+	AX25Frame endFrame;
+        strncpy(endFrame.dest_callsign, "CQTEST-0", CALLSIGN_MAX_LEN);
+        strncpy(endFrame.source_callsign, "CQTEST-1", CALLSIGN_MAX_LEN);
+        strcpy(endFrame.data, "END");
+	for(int i=0; i < 7; i++) {
+		send_to_direwolf(&endFrame,"127.0.0.1", 8001);
+		sleep(1);
+	}
+
 	printf("\n----------------\n");
 	
 	fclose(file);
