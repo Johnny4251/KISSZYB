@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 		recv_from_direwolf(row, WIDTH+5, "127.0.0.1", 8001);
 		
 		// check for end
-		if(strcmp(row, "END") == 0) {
+		if(strncmp(row+2, "END", strlen("END")) == 0) {
 			break;
 		}
 
