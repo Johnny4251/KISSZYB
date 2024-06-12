@@ -33,12 +33,14 @@ int main(int argc, char **argv) {
         }
 	
 	file = fopen(filepath, "w");
+	printf("Image will be saved as: %s\n", filepath);
+
 	int frames_recvd = 0;
 	printf("\n");
 	while(1) {
 		char row[WIDTH];
 		recv_from_direwolf(row, WIDTH+5, "127.0.0.1", 8001);
-		
+				
 		// check for end
 		if(strncmp(row+2, "END", strlen("END")) == 0) {
 			break;
