@@ -33,7 +33,8 @@ int main(int argc, char **argv) {
         }
 	
 	file = fopen(filepath, "w");
-	int packets_recvd = 0;
+	int frames_recvd = 0;
+	printf("\n");
 	while(1) {
 		char row[WIDTH];
 		recv_from_direwolf(row, WIDTH+5, "127.0.0.1", 8001);
@@ -42,7 +43,7 @@ int main(int argc, char **argv) {
 		if(strncmp(row+2, "END", strlen("END")) == 0) {
 			break;
 		}
-		packets_recvd += 1;
+		frames_recvd += 1;
 
 		if(strlen(row) > 2) {
 		    for(int i=0; i<HEIGHT; i++) {
@@ -50,11 +51,14 @@ int main(int argc, char **argv) {
 		    }
 		    
         	}
-		printf("\rFrame Count: \t%d  ", packets_recvd);
+		printf("\rFrame Count: \t%d/250  ", frames_recvd);
 		fflush(stdout);
 	}
-	printf("Frame Count: \t%d  ", packets_recvd);
+	printf("Frame Count: \t%d/250  ", frames_recvd);
 	fflush(stdout);
+
+	int less_recvd = 250 - frames_recvd;
+	printf("Finished with: %d frames missing!\n", less_recvd);
 
 	fclose(file);
 	return 0;
