@@ -50,10 +50,10 @@ int main(int argc, char **argv) {
 		    }
 		    
         	}
-		printf("\rPacket Count: %d   ", packets_recvd);
+		printf("\rFrame Count: \t%d  ", packets_recvd);
 		fflush(stdout);
 	}
-	printf("Packet Count: %d   ", packets_recvd);
+	printf("Frame Count: \t%d  ", packets_recvd);
 	fflush(stdout);
 
 	fclose(file);
