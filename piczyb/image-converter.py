@@ -3,6 +3,11 @@ import os
 import cv2
 import numpy as np
 
+"""
+Turns img into .zyb file.
+ZYB files are newline seperated pixel values
+with intensity ranges from 0-127.
+"""
 def encode_image(img_file):
     img = cv2.imread(img_file)
     img = cv2.resize(img, (250,250), interpolation=cv2.INTER_LINEAR)
@@ -15,6 +20,10 @@ def encode_image(img_file):
             f.write(str(img[i,j])+"\n")
     f.close()
 
+
+"""
+Decodes .zyb into .png. 
+"""
 def decode_image(encoded_file, resize=False):
     with open(encoded_file, 'r') as file:
         lines = file.read().splitlines()

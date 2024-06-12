@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
         }
 	
 	file = fopen(filepath, "w");
-	
+	int packets_recvd = 0;
 	while(1) {
 		char row[WIDTH];
 		recv_from_direwolf(row, WIDTH+5, "127.0.0.1", 8001);
@@ -42,16 +42,19 @@ int main(int argc, char **argv) {
 		if(strncmp(row+2, "END", strlen("END")) == 0) {
 			break;
 		}
+		packets_recvd += 1;
 
 		if(strlen(row) > 2) {
 		    for(int i=0; i<HEIGHT; i++) {
-			    printf("%d ", (int)row[i+2]);
 			    fprintf(file, "%d\n", (int)row[i+2]);
 		    }
-		    printf("\n\n");
 		    
         	}
+		printf("\rPacket Count: %d   ", packets_recvd);
+		fflush(stdout);
 	}
+	printf("Packet Count: %d   ", packets_recvd);
+	fflush(stdout);
 
 	fclose(file);
 	return 0;
