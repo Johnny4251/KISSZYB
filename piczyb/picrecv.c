@@ -45,12 +45,12 @@ int main(int argc, char **argv) {
 		if(strncmp(row+2, "END", strlen("END")) == 0) {
 			break;
 		}
-		frames_recvd += 1;
 
 		if(strlen(row) > 2) {
 		    for(int i=0; i<HEIGHT; i++) {
 			    fprintf(file, "%d\n", (int)row[i+2]);
 		    }
+		    frames_recvd += 1;
 		    
         	}
 		printf("\rFrame Count: \t%d/250  ", frames_recvd);
