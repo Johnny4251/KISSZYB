@@ -48,7 +48,7 @@ int main() {
 #include "kisszyb.h"
 
 int main(int argc, char **argv) {
-    char buffer[512];
+    char buffer[256];
     while(1) {
         recv_from_direwolf(buffer, 512, "127.0.0.1", 8001);
         if(strlen(buffer) > 2) { 
