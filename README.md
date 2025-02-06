@@ -46,7 +46,7 @@ int main() {
 ### Receiving a Frame
 
 ```c
-#inclue <string.h>
+#include <string.h>
 #include "kisszyb.h"
 
 int main(int argc, char **argv) {
