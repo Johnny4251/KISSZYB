@@ -26,6 +26,7 @@ Include the `kisszyb.h` header in your project and link against the KISSZYB libr
 ### Sending a Frame
 
 ```c
+#include <string.h>
 #include "kisszyb.h"
 
 int main() {
@@ -36,7 +37,7 @@ int main() {
     strncpy(myFrame.dest_callsign, "CQTEST-0", CALLSIGN_MAX_LEN);
     strncpy(myFrame.source_callsign, "CQTEST-1", CALLSIGN_MAX_LEN);
 
-    strcpy(myFrame.data, &buffer);
+    strcpy(myFrame.data, buffer);
     send_to_direwolf(&myFrame, "127.0.0.1", 8001);
     return 0;
 }
@@ -45,6 +46,7 @@ int main() {
 ### Receiving a Frame
 
 ```c
+#inclue <string.h>
 #include "kisszyb.h"
 
 int main(int argc, char **argv) {
